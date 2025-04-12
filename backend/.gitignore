@@ -1,5 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+integrations/__pycache__/
 *.py[cod]
 *$py.class
 
@@ -74,3 +75,4 @@ instance/
 *.bak
 *.tmp
 *.swp
+*.rdb

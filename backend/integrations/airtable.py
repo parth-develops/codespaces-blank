@@ -9,19 +9,21 @@ import httpx
 import asyncio
 import base64
 import hashlib
+import os
+from dotenv import load_dotenv
 
 import requests
 from integrations.integration_item import IntegrationItem
 
 from redis_client import add_key_value_redis, get_value_redis, delete_key_redis
 
-# CLIENT_ID = 'XXX'
-# CLIENT_SECRET = 'XXX'
-CLIENT_ID = '329147ef-ac8b-4863-bced-77b7b195258f'
-CLIENT_SECRET = 'e59aec7edddef2edf4388ef611b151ab5fc85c61f828df909c147085e8ffb4f1'
-REDIRECT_URI = 'http://localhost:8000/integrations/airtable/oauth2callback'
-authorization_url = f'https://airtable.com/oauth2/v1/authorize?client_id={CLIENT_ID}&response_type=code&owner=user&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fintegrations%2Fairtable%2Foauth2callback'
+load_dotenv()
 
+CLIENT_ID = os.getenv('AIRTABLE_CLIENT_ID')
+CLIENT_SECRET = os.getenv('AIRTABLE_CLIENT_SECRET')
+REDIRECT_URI = os.getenv('AIRTABLE_REDIRECT_URI')
+
+authorization_url = f'https://airtable.com/oauth2/v1/authorize?client_id={CLIENT_ID}&response_type=code&owner=user&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fintegrations%2Fairtable%2Foauth2callback'
 encoded_client_id_secret = base64.b64encode(f'{CLIENT_ID}:{CLIENT_SECRET}'.encode()).decode()
 scope = 'data.records:read data.records:write data.recordComments:read data.recordComments:write schema.bases:read schema.bases:write'
 

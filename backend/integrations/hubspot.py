@@ -151,7 +151,7 @@ async def get_items_hubspot(credentials: dict) -> list[IntegrationItem]:
             name=name or props.get("email"),
             creation_time=datetime.fromisoformat(created[:-1]) if created else None,
             last_modified_time=datetime.fromisoformat(modified[:-1]) if modified else None,
-            url=f"https://app.hubspot.com/contacts/{contact.get('id')}",  # Not real; you can update this
+            url=f"https://app.hubspot.com/contacts/{contact.get('id')}",
             visibility=True
         )
 

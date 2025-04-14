@@ -33,8 +33,6 @@ async def authorize_hubspot(user_id, org_id):
         'user_id': user_id,
         'org_id': org_id
     }
-    print(f"CLIENT_ID: {CLIENT_ID}")
-    print(f"CLIENT_SECRET: {CLIENT_SECRET}")
 
     encoded_state = base64.urlsafe_b64encode(json.dumps(state_data).encode('utf-8')).decode('utf-8')
 
